@@ -25,3 +25,24 @@ def register():
             
         return redirect("/login")
     return render_template("register.html", title="Register")
+
+def index():
+    return render_template("index.html")
+
+def login():
+    return render_template("login.html")
+
+def view_myclub():
+    return render_template("club.html")
+
+def addProduct():
+    return render_template("make_order.html") # ან შენი შესაბამისი გვერდი
+
+def products():
+    return render_template("product_card.html")
+
+def makeOrder():
+    return render_template("make_order.html")
+
+def singout():
+    return redirect("/")
