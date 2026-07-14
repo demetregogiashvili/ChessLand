@@ -4,7 +4,11 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
-    # დაამატე სხვა ველებიც, რაც გქონდა
+    name = db.Column(db.String)
+    surname = db.Column(db.String)
+    email = db.Column(db.String)
+    profile_url = db.Column(db.String)
+    is_admin = db.Column(db.Boolean, default=False)
 
 class ChessClub(db.Model):
     __tablename__ = "chess_clubs"
