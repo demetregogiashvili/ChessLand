@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect
+from flask import render_template, request, redirect, url_for
 from models import User, Admin, Product, Orders
 from ext import db, login_manager
 from flask_login import current_user,login_user,logout_user,login_required
@@ -78,6 +78,15 @@ def makeOrder(product_id):
     product = Product.query.get(product_id)
     return render_template("make_order.html",title = "make order",product = product)
 @login_required
+def delete_product(product_id):
+    if not current_user.is_admin:
+        return "შენ არ გაქვს ადმინის უფლებები!", 403
+    
+    product = Product.query.get_or_404(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    
+    return redirect(url_for('index'))
 def singout():
     logout_user()
     return redirect("/")

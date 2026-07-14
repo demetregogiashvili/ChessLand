@@ -20,5 +20,6 @@ app.add_url_rule("/myclub", "club", club)
 app.add_url_rule("/add_product/<farm_id>","addProduct",addProduct,methods = ["get","post"])
 app.add_url_rule("/allproduct","products",products)
 app.add_url_rule("/order/<product_id>","makeorder",makeOrder,methods = ["get","post"])
+app.add_url_rule("/delete_product/<int:product_id>", "delete_product", delete_product)
 if __name__ == "__main__":
     app.run(debug = True,host="0.0.0.0")
