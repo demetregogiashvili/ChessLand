@@ -3,10 +3,15 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxFZjGu7b2JuS66ObqAfd6PaTwW56jWTwA_0t_xDvNeGlN9ogacuACy9Y&s=10"></use>
-                </svg>
-            </a>
+               <!-- ChessLand ლოგო -->
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+           <img src="{{ url_for('static', filename='chess_logo.png') }}" alt="Chess Logo" style="width: 40px; height: auto; margin-right: 15px;">
+        </a>
+
+            <!-- TBC ლოგო ლინკით -->
+        <a href="https://www.tbcbank.ge" target="_blank" class="d-flex align-items-center mb-2 mb-lg-0">
+          <img src="{{ url_for('static', filename='tbc_logo.png') }}" alt="TBC Bank" style="width: 80px; height: auto;">
+        </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li>
