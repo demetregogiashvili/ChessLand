@@ -1,5 +1,5 @@
 from flask import render_template,request,redirect
-from models import User,Farms,Product,Orders
+from models import User, Admin, Product, Orders
 from ext import db, login_manager
 from flask_login import current_user,login_user,logout_user,login_required
 def index():
