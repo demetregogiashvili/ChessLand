@@ -13,7 +13,13 @@
             class="rounded-circle"
         >
     </a>
-
+    <span class="text-white ms-2">
+    {% if current_user.is_admin %}
+        Admin
+    {% else %}
+        {{ current_user.username }}
+    {% endif %}
+</span>
     <ul class="dropdown-menu text-small">
         <li>
             <a class="dropdown-item" href="/settings">Settings</a>
