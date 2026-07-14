@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class = "container m-5 d-flex justify-content-center items-align-center text-center">
+        <div class = "card p-5">
+            <h1>Add Product</h1>
+            <form method="post">
+                <label>Title</label>
+                <input type="text" name = "title" id = "title"><br><br>
+                <label>picture</label>
+                <input type="text" name = "picture" id = "pictrue"><br><br>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<div class="dropdown text-end">
+    <a
+        href="#"
+        class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+    >
+        <img
+            src="{{ current_user.profile_url }}"
+            alt="user"
+            width="32"
+            height="32"
+            class="rounded-circle"
+        >
+    </a>
+
+    <ul class="dropdown-menu text-small">
+        <li>
+            <a class="dropdown-item" href="/settings">Settings</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="/profile">Profile</a>
+        </li>
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+        <li>
+            <a class="dropdown-item" href="/logout">Sign out</a>
+        </li>
+    </ul>
+</div>

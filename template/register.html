@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container d-flex align-items-center py-4 bg-body-tertiary justify-content-center">
+    <main class="form-signin w-100 m-auto">
+        <form style="max-width: 600px; margin:30px" method="post">
+            <img class="mb-4" src="{{ url_for('static', filename='images/chess_logo.png') }}" alt="ChessLand" width="72" height="57">
+    
+            <h1 class="h3 mb-3 fw-normal">Create ChessLand Account</h1>
+    
+            <div class="form-floating">
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                <label for="email">Email address</label>
+            </div>
+    
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" name="username" placeholder="CoolUser78" required>
+                <label for="username">Username</label>
+            </div>
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" id="name" name="name" placeholder="John" required>
+                <label for="name">Name</label>
+            </div>
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Doe" required>
+                <label for="lastname">Lastname</label>
+            </div>
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" id="img_url" name="img_url" placeholder="url" required>
+                <label for="img_url">Profile URL</label>
+            </div>
+            
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="admin" id="isAdmin" name="isAdmin">
+                <label class="form-check-label" for="isAdmin">
+                    I am an Admin
+                </label>
+            </div>
+            
+            <p class="text-danger">{{message}}</p>
+            <button class="btn btn-primary w-100 py-2" type="submit">
+                Sign up
+            </button>
+        </form>
+    </main>
+</div>
+{% endblock %}
