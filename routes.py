@@ -50,11 +50,11 @@ def club():
     club = club.query.filter_by(Admin_id = current_user.id).first()
     print(club.clubname)
     return render_template("land.html",club = club)
-def addProduct(club_id):
+def addProduct(admin_id):
     if request.method == "POST":
         title = request.form['title']
         picture = request.form["picture"]
-        product = Product(title = title , img_url = picture , club_id = club_id)
+        product = Product(title=title, img_url=picture, admin_id=admin_id)
         db.session.add(product)
         db.session.commit()
     return render_template("land_addproduct.html")
@@ -71,7 +71,7 @@ def makeOrder(product_id):
             date = date,
             product_id = product_id,
             user_id = current_user.id,
-            farm_id = product.farm.id
+            admin_id = product.admin_id
         )
         db.session.add(order)
         db.session.commit()

@@ -21,19 +21,14 @@ class Admin(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     Adminname = db.Column(db.String)
     Admin_id = db.Column(db.Integer,db.ForeignKey("user.id"))
-    products = db.relationship(
-        "Product",
-        backref = "Admin"
-    )
-    orders = db.relationship(
-        "Orders",
-        backref = "Admin"
-    )
+    products = db.relationship("Product", backref="admin_ref") 
+    orders = db.relationship("Orders", backref="admin_ref")
+    
 class Product(db.Model):
     id = db.Column(db.Integer,primary_key= True)
     title = db.Column(db.String)
     img_url = db.Column(db.String)
-    farm_id = db.Column(db.Integer, db.ForeignKey("admin.id")) 
+    admin_id = db.Column(db.Integer, db.ForeignKey("admin.id"))
     orders = db.relationship("Orders", backref="product")
 class Orders(db.Model):
     id = db.Column(db.Integer,primary_key = True)
@@ -41,4 +36,4 @@ class Orders(db.Model):
     date = db.Column(db.String)
     product_id = db.Column(db.Integer,db.ForeignKey("product.id"))
     user_id = db.Column(db.Integer,db.ForeignKey("user.id"))
-    farm_id = db.Column(db.Integer,db.ForeignKey("farms.id"))
+    admin_id = db.Column(db.Integer, db.ForeignKey("admin.id"))
