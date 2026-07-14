@@ -1,23 +1,15 @@
 <div class="dropdown text-end">
-    <a
-        href="#"
-        class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-    >
-      <img src="{{ current_user.profile_url if current_user.profile_url else url_for('static', filename='default-avatar.png') }}"
-     alt="user"
-     width="32"
-     height="32"
-     class="rounded-circle">
-    </a>
-    <span class="text-white ms-2">
-    {% if current_user.is_admin %}
-        Admin
-    {% else %}
-        {{ current_user.name }}
+    {% if current_user.is_authenticated %}
+        <a href="#">
+            <img src="{{ current_user.profile_url if current_user.profile_url else url_for('static', filename='default_avatar.png') }}" 
+                 width="32" height="32" class="rounded-circle">
+        </a>
+        <span class="text-white ms-2">
+            {% if current_user.is_admin %} Admin {% else %} {{ current_user.username }} {% endif %}
+        </span>
+        <!-- აქ მოდის შენი dropdown მენიუ... -->
     {% endif %}
-</span>
+
     <ul class="dropdown-menu text-small">
         <li>
             <a class="dropdown-item" href="/settings">Settings</a>

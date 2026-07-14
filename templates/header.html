@@ -19,10 +19,11 @@
             </form>
 
        <div class="text-end">
+    <!-- შეცვალე შენი არსებული ხაზი ამით -->
     {% if current_user.is_authenticated %}
-        {% include 'header_autenticated.html' %}
+    <span>{{ current_user.username }}</span>
     {% else %}
-        {% include 'header_login.html' %}
+    <a href="/login">Login</a>
     {% endif %}
 </div>
 </header>

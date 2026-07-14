@@ -14,7 +14,7 @@ def register():
             return "ეს მეილი უკვე დარეგისტრირებულია! სცადე სხვა."
 
         # თუ არ არსებობს, ვქმნით ახალ მომხმარებელს
-        user = User(username=username, password=password, email=email)
+        user = User(username=username, password=password, email=email, name=username)
         db.session.add(user)
         db.session.commit()
 
