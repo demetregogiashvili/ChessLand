@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect
-from models import User, ChessClub, Product, Orders
+from models import User, Product, Orders
 from ext import db, login_manager
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -41,7 +41,7 @@ def register():
         
         if is_admin_check == "admin":
             user.is_admin = True
-            club = ChessClub(club_name=username, admin_id=user.id)
+            club = myclub(club_name=username, admin_id=user.id)
             db.session.add(club)
             db.session.commit()
             
@@ -49,7 +49,7 @@ def register():
     return render_template("register.html", title="Register")
 
 def myclub():
-    club = ChessClub.query.filter_by(admin_id=current_user.id).first()
+    club = myclub.query.filter_by(admin_id=current_user.id).first()
     return render_template("club.html", club=club)
 
 def addProduct(club_id):
