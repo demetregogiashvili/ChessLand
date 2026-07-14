@@ -18,12 +18,11 @@
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>
 
-       <div class="text-end">
-    <!-- შეცვალე შენი არსებული ხაზი ამით -->
+     <div class="text-end">
     {% if current_user.is_authenticated %}
-    <span>{{ current_user.username }}</span>
+        <span>{{ current_user.username }}</span>
     {% else %}
-    <a href="/login">Login</a>
+        <a href="/login">Login</a>
     {% endif %}
 </div>
 </header>
