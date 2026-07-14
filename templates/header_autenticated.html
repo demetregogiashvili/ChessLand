@@ -5,13 +5,11 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
     >
-        <img
-            src="{{ current_user.profile_url }}"
-            alt="user"
-            width="32"
-            height="32"
-            class="rounded-circle"
-        >
+      <img src="{{ current_user.profile_url if current_user.profile_url else url_for('static', filename='default-avatar.png') }}"
+     alt="user"
+     width="32"
+     height="32"
+     class="rounded-circle">
     </a>
     <span class="text-white ms-2">
     {% if current_user.is_admin %}

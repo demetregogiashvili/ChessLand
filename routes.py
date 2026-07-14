@@ -37,7 +37,7 @@ def register():
 def view_myclub():
     club = ChessClub.query.filter_by(admin_id=current_user.id).first()
     return render_template("club.html", club=club)
-@app.route('/add_product/<int:club_id>', methods=['GET', 'POST'])
+
 def addProduct(club_id):
     if request.method == "POST":
         title = request.form['title']
@@ -48,7 +48,7 @@ def addProduct(club_id):
         return "პროდუქტი დამატებულია!"
     return render_template("club_addproduct.html", club_id=club_id)
 
-@app.route('/allproduct')
+
 def products():
     all_products = Product.query.all()
     return render_template("all_products.html", products=all_products)
