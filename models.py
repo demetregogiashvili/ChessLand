@@ -1,12 +1,13 @@
 from ext import db
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin): # აქ გაქვს ყველაფერი ერთად
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
     name = db.Column(db.String)
     surname = db.Column(db.String)
-    email = db.Column(db.String)
+    email = db.Column(db.String(150), unique=True)
     profile_url = db.Column(db.String)
     is_admin = db.Column(db.Boolean, default=False)
 
