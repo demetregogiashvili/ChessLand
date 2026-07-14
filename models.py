@@ -19,3 +19,12 @@ class Product(db.Model):
     title = db.Column(db.String)
     img_url = db.Column(db.String)
     club_id = db.Column(db.Integer, db.ForeignKey("chess_clubs.id"))
+
+class Orders(db.Model):
+    __tablename__ = "orders"
+    id = db.Column(db.Integer, primary_key=True)
+    number = db.Column(db.String)
+    date = db.Column(db.String)
+    product_id = db.Column(db.Integer, db.ForeignKey("product.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    club_id = db.Column(db.Integer, db.ForeignKey("chess_clubs.id"))
