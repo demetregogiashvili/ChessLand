@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class = "container">
-        <a class = "btn btn-primary" href="/add_product/{{farm.id}}">Add Product</a>
+        <a class = "btn btn-primary" href="/add_product/{{land.id}}">Add Product</a>
         <hr>
-        <h1>{{material.materialname}}</h1>
+        <h1>{{land.landname}}</h1>
         <div class = "row">
-        {% for product in farm.products %}
+        {% for product in land.products %}
             <div class = "col-4">
                 {% include 'product_card.html' %}
             </div>
@@ -18,7 +18,7 @@
                 <th>Date</th>
                 <th>User</th>
             </tr>
-            {% for order in farm.orders %}
+            {% for order in land.orders %}
             <tr>
                 <td>{{order.product.title}}</td>
                 <td>{{order.number}}</td>

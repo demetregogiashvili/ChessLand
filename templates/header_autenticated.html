@@ -1,27 +1,36 @@
 <div class="dropdown text-end">
-    {% if current_user.is_authenticated %}
-        <a href="#">
-            <img src="{{ current_user.profile_url if current_user.profile_url else url_for('static', filename='default_avatar.png') }}" 
-                 width="32" height="32" class="rounded-circle">
-        </a>
-        <span class="text-white ms-2">
-            {% if current_user.is_admin %} Admin {% else %} {{ current_user.username }} {% endif %}
-        </span>
-        <!-- აქ მოდის შენი dropdown მენიუ... -->
-    {% endif %}
+                <a
+                    href="#"
+                    class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    <img
+                        src="{{ current_user.profile_url }}"
+                        alt="mdo"
+                        width="32"
+                        height="32"
+                        class="rounded-circle"
+                    >
+                </a>
 
-    <ul class="dropdown-menu text-small">
-        <li>
-            <a class="dropdown-item" href="/settings">Settings</a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="/profile">Profile</a>
-        </li>
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-        <li>
-            <a class="dropdown-item" href="/logout">Sign out</a>
-        </li>
-    </ul>
-</div>
+                <ul class="dropdown-menu text-small">
+                    {% if current_user.is_farmer %}
+                    <li>
+                        <a class="dropdown-item" href="/myfarm">My Farm</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Profile</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/logout">Sign out</a>
+                    </li>
+                </ul>
+            </div>

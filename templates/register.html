@@ -1,53 +1,99 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container d-flex align-items-center py-4 bg-body-tertiary justify-content-center">
-    <main class="form-signin w-100 m-auto">
-        <form style="max-width: 600px; margin:30px" method="post">
-            <img class="mb-4" src="{{ url_for('static', filename='images/chess_logo.png') }}" alt="ChessLand" width="72" height="57">
+<div class = "container d-flex align-items-center py-4 bg-body-tertiary justify-content-center">
+    <main class="form-signin w-100 m-auto ">
+        <form style = "max-width: 600px; margin:30px" method = "post">
+            <img
+                class="mb-4"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxFZjGu7b2JuS66ObqAfd6PaTwW56jWTwA_0t_xDvNeGlN9ogacuACy9Y&s=10"
+                alt=""
+                width="72"
+                height="57"
+            >
     
-            <h1 class="h3 mb-3 fw-normal">Create ChessLand Account</h1>
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     
             <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name = "email"
+                    placeholder="name@example.com"
+                >
                 <label for="email">Email address</label>
             </div>
     
             <div class="form-floating">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name = "password"
+                    placeholder="Password"
+                >
                 <label for="password">Password</label>
             </div>
-            
             <div class="form-floating">
-                <input type="text" class="form-control" id="username" name="username" placeholder="CoolUser78" required>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name = "username"
+                    placeholder="CoolUser78"
+                >
                 <label for="username">Username</label>
             </div>
-            
             <div class="form-floating">
-                <input type="text" class="form-control" id="name" name="name" placeholder="John" required>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name = "name"
+                    placeholder="John"
+                >
                 <label for="name">Name</label>
             </div>
-            
             <div class="form-floating">
-                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Doe" required>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="lastname"
+                    name = "lastname"
+                    placeholder="Doe"
+                >
                 <label for="lastname">Lastname</label>
             </div>
-            
             <div class="form-floating">
-                <input type="text" class="form-control" id="img_url" name="img_url" placeholder="url" required>
-                <label for="img_url">Profile URL</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="img_url"
+                    name = "img_url"
+
+                    placeholder="https://img.pikbest.com/png-images/20241029/an-agriculture-logo-natural-farm-brand-icon_11024318.png!sw800"
+                    required
+                    >
+                <label for="img_url">profile url</label>
             </div>
-            
             <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="admin" id="isAdmin" name="isAdmin">
-                <label class="form-check-label" for="isAdmin">
-                    I am an Admin
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="farmer"
+                    id="isFarmer"
+                    name = "isFarmer"
+                    
+                >
+                <label class="form-check-label" for="isFarmer">
+                    Im Farmer
                 </label>
             </div>
-            
-            <p class="text-danger">{{message}}</p>
+            <p class = "text-danger">{{message}}</p>
             <button class="btn btn-primary w-100 py-2" type="submit">
                 Sign up
             </button>
+    
         </form>
     </main>
 </div>
