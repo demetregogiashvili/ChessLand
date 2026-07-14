@@ -47,6 +47,16 @@ def addProduct(club_id):
         db.session.commit()
     return render_template("club_addproduct.html")
 
+def addProduct(club_id):
+    if request.method == "POST":
+        title = request.form['title']
+        picture = request.form['picture']
+        product = Product(title=title, img_url=picture, club_id=club_id)
+        db.session.add(product)
+        db.session.commit()
+        return "პროდუქტი დამატებულია!"
+    return render_template("club_addproduct.html", club_id=club_id)
+
 def products():
     all_products = Product.query.all()
     return render_template("all_products.html", products=all_products)

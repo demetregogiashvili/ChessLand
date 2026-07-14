@@ -3,8 +3,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-3">
-                <!-- აქ გამოვიყენეთ <img> ტეგი src-ით -->
-                <img src="{{ url_for('static', filename='chess_logo.png') }}" alt="ChessLand Logo" width="40" height="32">
+            <img src="{{ url_for('static', filename='chess_logo.png') }}" alt="ChessLand Logo" width="40" height="32">
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -19,12 +18,12 @@
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>
 
-            {% if current_user.is_authenticated %}
-                {% include 'header_autenticated.html' %}
-            {% else %}
-                {% include 'header_login.html' %}
-            {% endif %}
-            
+           <!-- შეცვალე შენი არსებული ტექსტი ამით -->
+        {% if current_user.is_admin %}
+            <span>Admin</span>
+        {% else %}
+            <span>User</span>
+        {% endif %}
         </div>
     </div>
 </header>
