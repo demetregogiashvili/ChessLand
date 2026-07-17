@@ -12,10 +12,10 @@
              <p>ფასი: {{ p.price }}</p> 
              <p>ავტორი: {{ p.admin_id }}</p>
 
-                {% if current_user.is_authenticated and current_user.is_admin %}
-                     <a href="{{ url_for('delete_product', product_id=p.id) }}" class="btn btn-danger">Delete</a>
-                {% endif %}
-            </div>
+                <!-- შეცვალე მე-15 ხაზი ასე: -->
+               {% if current_user.is_authenticated %}
+                 <a href="{{ url_for('delete_product', product_id=p.id) }}" class="btn btn-danger">Delete</a>
+               {% endif %}
         </div>
         {% endfor %}
     </div>
