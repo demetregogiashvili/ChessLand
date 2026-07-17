@@ -90,7 +90,7 @@ def makeOrder(product_id):
         db.session.commit()
     product = Product.query.get(product_id)
     return render_template("make_order.html",title = "make order",product = product)
-@app.route("/delete_product/<int:product_id>")
+@app.route("/delete_product/<int:product_id>", endpoint='delete_product')
 @login_required
 def delete_product(product_id):  
     if not current_user.is_admin:
