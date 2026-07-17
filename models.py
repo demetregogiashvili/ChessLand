@@ -23,6 +23,7 @@ class Product(db.Model):
     img_url = db.Column(db.String)
     admin_id = db.Column(db.Integer, db.ForeignKey("admin.id"))
     orders = db.relationship("Orders", backref="product")
+    price = db.Column(db.Integer)
 class Orders(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     number = db.Column(db.Integer)
