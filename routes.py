@@ -1,8 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from models import User, Admin, Product, Orders
-from ext import db, login_manager
+from ext import db, login_manager, app
 from flask_login import current_user,login_user,logout_user,login_required
-from app import app
 def index():
     return render_template("index.html",title = "home")
 def login():

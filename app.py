@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from models import *
 from ext import login_manager,db
-from routes import *
+from routes import index, login, register, club, addProduct, products, makeOrder, delete_product,logout
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'ChessLand.db')
@@ -17,7 +17,7 @@ with app.app_context():
 app.add_url_rule("/","index",index)
 app.add_url_rule("/login","login",login,methods = ["get","post"])
 app.add_url_rule("/register","reg",register,methods = ["get","post"])
-app.add_url_rule("/logout","logout",singout)
+app.add_url_rule("/logout", "logout", logout)
 app.add_url_rule("/myclub", "club", club)
 app.add_url_rule("/add_product", "addProduct", addProduct, methods = ["get", "post"])
 app.add_url_rule("/allproduct","products",products)
