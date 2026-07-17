@@ -60,7 +60,7 @@ def addProduct():
     return render_template("land_addproduct.html")
 def products():
     products = Product.query.all()
-    return render_template("all_products.html",products = products)
+    return render_template("add_products.html",products = products)
 def makeOrder(product_id):
     if request.method == "POST":
         number = request.form["qountety"]
