@@ -50,11 +50,11 @@ def club():
     club = club.query.filter_by(Admin_id = current_user.id).first()
     print(club.clubname)
     return render_template("land.html",club = club)
-def addProduct(admin_id):
+def addProduct():
     if request.method == "POST":
         title = request.form['title']
         picture = request.form["picture"]
-        product = Product(title=title, img_url=picture, admin_id=admin_id)
+        product = Product(title=title, img_url=picture, admin_id=current_user.id)
         db.session.add(product)
         db.session.commit()
     return render_template("land_addproduct.html")
