@@ -57,7 +57,8 @@ def addProduct():
     if request.method == "POST":
         title = request.form['title']
         picture = request.form['picture']
-        product = Product(title=title, img_url=picture, admin_id=current_user.id)
+        price = request.form['price']  
+        product = Product(title=title, img_url=picture, price=price, admin_id=current_user.id)
         db.session.add(product)
         db.session.commit()
         return redirect("/allproducts") # დამატების შემდეგ გადაიყვანს სიაში
@@ -84,16 +85,13 @@ def makeOrder(product_id):
         db.session.commit()
     product = Product.query.get(product_id)
     return render_template("make_order.html",title = "make order",product = product)
+@app.route("/delete_product/<int:product_id>")
 @login_required
-def delete_product(product_id):
+def delete_product(product_id):  # აი, ეს ხაზი გაკლდა
     if not current_user.is_admin:
         return "შენ არ გაქვს ადმინის უფლებები!", 403
     
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
     db.session.commit()
-    
-@app.route("/logout")
-def logout():
-    logout_user()
-    return redirect(url_for("index"))
+    return redirect("/allproducts") 
