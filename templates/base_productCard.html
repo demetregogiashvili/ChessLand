@@ -1,5 +1,11 @@
 <div class="card-body">
-    <h3 class="card-title">{{product.farm.farmname}}</h3>
+    <h3 class="card-title">
+    {% if product.admin_ref %}
+        {{ product.admin_ref.Adminname }}
+    {% else %}
+        ChessLand Admin
+    {% endif %}
+</h3>
     <p class="card-text">{{product.title}}</p>
     
     <div class="d-flex justify-content-between align-items-center">
