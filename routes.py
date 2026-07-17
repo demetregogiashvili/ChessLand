@@ -25,7 +25,7 @@ def register():
         surname = request.form["lastname"]
         img_url = request.form["img_url"]
         try:
-            Admin = request.form["Admin"]
+            isAdmin = request.form.get("Admin", "noAdmin")
         except:
             isAdmin = "noAdmin"
         if User.query.filter_by(email = email).first():
@@ -34,15 +34,16 @@ def register():
             return render_template("register.html",title = "register",message = "username already used")
 
         user = User(
-            username = username,password = password,name = name,
-            surname = surname,email = email,profile_url = img_url
+            username=username, password=password, name=name,
+            surname=surname, email=email, profile_url=img_url,
+            is_admin=(isAdmin == "Admin") # აქ ენიჭება True ან False
         )
         db.session.add(user)
         db.session.commit()
-        if isAdmin == "Admin":
+        if user.is_admin:
             user.is_admin = True
-            club= club(clubmname = username,club_id = club.id)
-            db.session.add(club)
+            new_admin = Admin(Adminname=username, Admin_id=user.id)
+            db.session.add(new_admin)
             db.session.commit()
         return redirect("/login")
     return render_template("register.html",title = "register")

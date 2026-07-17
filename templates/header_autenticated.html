@@ -15,9 +15,9 @@
                 </a>
 
                 <ul class="dropdown-menu text-small">
-                    {% if current_user.is_farmer %}
+                    {% if current_user.is_admin %}
                     <li>
-                        <a class="dropdown-item" href="/myfarm">My Farm</a>
+                        <a class="dropdown-item" href="{{ url_for('addProduct') }}">Add Product</a>
                     </li>
                     {% endif %}
                     <li>

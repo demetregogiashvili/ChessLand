@@ -9,10 +9,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.Integer,unique = True)
     profile_url = db.Column(db.String)
     is_admin = db.Column(db.Boolean,default = False)
-    is_admin = db.relationship(
-    "Admin",   
-    backref = "user"
-)
+
 class Admin(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     Adminname = db.Column(db.String)
