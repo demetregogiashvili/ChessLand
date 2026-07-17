@@ -57,6 +57,7 @@ def club():
     return render_template("land.html",club = club)
 # 1. პროდუქტის დამატების route
 @app.route("/add_products", methods=['GET', 'POST'])
+@login_required
 def addProduct():
     if request.method == "POST":
         title = request.form['title']
