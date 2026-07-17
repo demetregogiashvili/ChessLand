@@ -2,8 +2,10 @@ from flask import render_template, request, redirect, url_for
 from models import User, Admin, Product, Orders
 from ext import db, login_manager, app
 from flask_login import current_user,login_user,logout_user,login_required
+@app.route("/")
 def index():
     return render_template("index.html",title = "home")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         email = request.form["email"]
@@ -16,6 +18,7 @@ def login():
             return redirect("/login")
         return redirect("/register")
     return render_template("login.html",title = "login")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == "POST":
         email = request.form["email"]
@@ -47,6 +50,7 @@ def register():
             db.session.commit()
         return redirect("/login")
     return render_template("register.html",title = "register")
+@app.route("/myclub")
 def club():
     club = club.query.filter_by(Admin_id = current_user.id).first()
     print(club.clubname)
@@ -69,6 +73,7 @@ def addProduct():
 def products():
     all_products = Product.query.all()
     return render_template("all_products.html", products=all_products)
+@app.route("/order/<int:product_id>", methods=['GET', 'POST'])
 def makeOrder(product_id):
     if request.method == "POST":
         number = request.form["qountety"]
@@ -87,7 +92,7 @@ def makeOrder(product_id):
     return render_template("make_order.html",title = "make order",product = product)
 @app.route("/delete_product/<int:product_id>")
 @login_required
-def delete_product(product_id):  # აი, ეს ხაზი გაკლდა
+def delete_product(product_id):  
     if not current_user.is_admin:
         return "შენ არ გაქვს ადმინის უფლებები!", 403
     
@@ -95,3 +100,7 @@ def delete_product(product_id):  # აი, ეს ხაზი გაკლდ�
     db.session.delete(product)
     db.session.commit()
     return redirect("/allproducts") 
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
