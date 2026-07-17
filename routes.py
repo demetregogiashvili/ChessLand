@@ -93,7 +93,7 @@ def delete_product(product_id):
     db.session.delete(product)
     db.session.commit()
     
-    return redirect(url_for('index'))
+@app.route("/logout")
 def logout():
     logout_user()
-    return redirect("/")
+    return redirect(url_for("index"))
