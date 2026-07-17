@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for
 from models import User, Admin, Product, Orders
 from ext import db, login_manager
 from flask_login import current_user,login_user,logout_user,login_required
+from app import app
 def index():
     return render_template("index.html",title = "home")
 def login():
@@ -51,17 +52,23 @@ def club():
     club = club.query.filter_by(Admin_id = current_user.id).first()
     print(club.clubname)
     return render_template("land.html",club = club)
+# 1. პროდუქტის დამატების route
+@app.route("/add_product", methods=['GET', 'POST'])
 def addProduct():
     if request.method == "POST":
         title = request.form['title']
-        picture = request.form["picture"]
+        picture = request.form['picture']
         product = Product(title=title, img_url=picture, admin_id=current_user.id)
         db.session.add(product)
         db.session.commit()
-    return render_template("land_addproduct.html")
+        return redirect("/allproducts") # დამატების შემდეგ გადაიყვანს სიაში
+    return render_template("add_products.html")
+
+# 2. პროდუქტების სიის route
+@app.route("/allproducts", methods=['GET'])
 def products():
-    products = Product.query.all()
-    return render_template("add_products.html",products = products)
+    all_products = Product.query.all()
+    return render_template("all_products.html", products=all_products)
 def makeOrder(product_id):
     if request.method == "POST":
         number = request.form["qountety"]
