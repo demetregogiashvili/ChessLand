@@ -94,6 +94,6 @@ def delete_product(product_id):
     db.session.commit()
     
     return redirect(url_for('index'))
-def singout():
+def logout():
     logout_user()
     return redirect("/")
